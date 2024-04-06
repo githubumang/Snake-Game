@@ -4,6 +4,9 @@ const foodSound = new Audio('./music/food.mp3');
 const gameOverSound = new Audio('./music/gameover.mp3');
 const moveSound = new Audio('./music/move.mp3');
 const musicSound = new Audio('./music/music.mp3');
+let temX = 0;
+let temY = 1;
+let pause = true;
 let score = 0;
 let speed = 7;
 let lastPaintTime = 0;
@@ -65,12 +68,13 @@ function gameEngine(){
     }
 
     //Moving the snake
-    for(let i = snakeArr.length-2; i>=0; i--){
-        snakeArr[i+1] = {...snakeArr[i]};
+    if(pause == false){
+        for(let i = snakeArr.length-2; i>=0; i--){
+            snakeArr[i+1] = {...snakeArr[i]};
+        }
+        snakeArr[0].x += inputDir.x;
+        snakeArr[0].y += inputDir.y;
     }
-    snakeArr[0].x += inputDir.x;
-    snakeArr[0].y += inputDir.y;
-
 
     //Display the snake
     board.innerHTML = "";
@@ -95,6 +99,15 @@ function gameEngine(){
     board.appendChild(foodElement);
 }
 
+function playOrPause(){
+    if(pause==true){
+        pause = false;
+    }
+    else{
+        pause = true;
+    }
+}
+
 
 
 // Game Logic
@@ -110,24 +123,32 @@ else{
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e=>{
     musicSound.play();
-    inputDir = {x:0, y:1} //Start the game
+    if(inputDir.x==0 && inputDir.y==0)
+        inputDir = {x:0, y:-1} //Start the game
     moveSound.play();
     switch(e.key){
         case "ArrowUp":
             inputDir.x = 0;
             inputDir.y = -1;
+            pause = false;
             break;
         case "ArrowDown":
             inputDir.x = 0;
             inputDir.y = 1;
+            pause = false;
             break;
         case "ArrowLeft":
             inputDir.x = -1;
             inputDir.y = 0;
+            pause = false;
             break;
         case "ArrowRight":
             inputDir.x = 1;
             inputDir.y = 0;
+            pause = false;
+            break;
+        case " ":
+            playOrPause();
             break;
         default: 
             break;
