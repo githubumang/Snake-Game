@@ -6,3 +6,5 @@ Deployed Link: https://githubumang.github.io/Snake-Game/
 Speed of the snake will increase after few scores.
 
 Music is given in the background.
+
+You can play and pause the game after pressing spacebar.
