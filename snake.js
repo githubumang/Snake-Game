@@ -41,7 +41,7 @@ function gameEngine(){
         snakeArr = [{x:13, y:15}];
         document.getElementById("score").innerHTML = "Score: "+0;
         score = 0;
-        // musicSound.play();
+        musicSound.play();
     }
 
     //If you have eaten the food
@@ -105,6 +105,7 @@ else{
 }
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e=>{
+    musicSound.play();
     inputDir = {x:0, y:1} //Start the game
     moveSound.play();
     switch(e.key){
