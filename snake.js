@@ -5,7 +5,7 @@ const gameOverSound = new Audio('./music/gameover.mp3');
 const moveSound = new Audio('./music/move.mp3');
 const musicSound = new Audio('./music/music.mp3');
 let score = 0;
-let speed = 6;
+let speed = 7;
 let lastPaintTime = 0;
 let snakeArr = [
     {x:13, y:15}
@@ -41,6 +41,7 @@ function gameEngine(){
         snakeArr = [{x:13, y:15}];
         document.getElementById("score").innerHTML = "Score: "+0;
         score = 0;
+        speed = 7;
         musicSound.play();
     }
 
@@ -52,6 +53,9 @@ function gameEngine(){
         let b = 16    
         food = {x: Math.round(a+(b-a)*Math.random()), y: Math.round(a+(b-a)*Math.random())};
         score += 1;
+        if((score%5)==0){
+            speed+=1;
+        }
         if(score>highScore){
             highScore = score
             localStorage.setItem("highScore", JSON.stringify(highScoreVal));
