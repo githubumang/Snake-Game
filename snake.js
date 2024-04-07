@@ -155,3 +155,38 @@ window.addEventListener('keydown', e=>{
 
     }
 })
+
+function snakeMoveButton(dir){
+    musicSound.play();
+    if(inputDir.x==0 && inputDir.y==0)
+        inputDir = {x:0, y:-1} //Start the game
+    moveSound.play();
+    switch(dir){
+        case "up":
+            inputDir.x = 0;
+            inputDir.y = -1;
+            pause = false;
+            break;
+        case "down":
+            inputDir.x = 0;
+            inputDir.y = 1;
+            pause = false;
+            break;
+        case "left":
+            inputDir.x = -1;
+            inputDir.y = 0;
+            pause = false;
+            break;
+        case "right":
+            inputDir.x = 1;
+            inputDir.y = 0;
+            pause = false;
+            break;
+        case "pause":
+            playOrPause();
+            break;
+        default: 
+            break;
+
+    }
+}

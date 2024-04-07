@@ -67,3 +67,64 @@
     border: .25vmin solid black;
     border-radius: 8px;
 }
+
+.moveButton{
+    visibility: hidden;
+}
+
+@media (max-width: 365px){
+    .body{
+        align-items: start;
+        height: 100%;
+        width: 100%;
+    }
+
+    #board{
+        margin-top: 40px;
+    }
+
+    #pause{
+        visibility: hidden;
+    }
+
+    #score{
+        top: 0px;
+        left: 220px;
+        font-size: 25px;
+    }
+
+    #highScoreBox{
+        top: 0px;
+        left: 15px;
+        font-size: 25px;
+    }
+
+    .moveButton{
+        visibility: visible;
+        position: absolute;
+        background-color: rgb(173, 36, 173, 0.7);
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        font-size: 25px;
+        color: white;
+    }
+    
+    #buttonUp{
+        top: 450px;
+    }
+    #buttonLeft{
+        top: 500px;
+        left: 100px;
+    }
+    #pauseButton{
+        top: 500px;
+    }
+    #buttonRight{
+        top: 500px;
+        right:100px;
+    }
+    #buttonDown{
+        top: 550px;
+    }
+}
